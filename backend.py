@@ -93,7 +93,7 @@ def remove_info():
 def home_page():
     add_background("static/images/bluebg.jpg")
     st.title("EmoVoice")
-    st.subheader("EmoVoice adalah sistem pengenalan emosi berbasis suara (Speech Emotion Recognition")
+    st.subheader("EmoVoice adalah sistem deteksi depresi berbais pengenalan emosi pada suara (Speech Emotion Recognition")
     st.markdown("<p style='font-size: 24px;'>Sistem ini mampu mendeteksi tujuh emosi dasar:</p>", unsafe_allow_html=True)
     st.write("<p style='font-size: 24px; color: maroon'>• Takut (Fear)<br>• Terkejut (Surprise)<br>• Sedih (Sad)<br>• Marah (Angry)<br>• Jijik (Disgust)<br>• Bahagia (Happy)<br>• Netral (Neutral)</p>", unsafe_allow_html=True)
 
@@ -143,8 +143,15 @@ def emotion_detection():
             
             # Predict emotion
             predicted_emotion = knn.predict(features_scaled)
+            predik = predicted_emotion[0]
+
+            emosi = [ 'angry', 'sad', 'fear', 'disgust']
             
-            st.success(f"Emosi yang terdeteksi: {predicted_emotion[0]}")
+            st.info(f"Emosi yang terdeteksi: {predicted_emotion[0]}")
+            if predik in emosi : 
+                st.error("Kondisi Mental : Depresi ")
+            else : 
+                st.success("Kondisi Mental : Normal ")
         except Exception as e:
             st.error(f"Terjadi kesalahan dalam memproses audio: {str(e)}")
 
@@ -385,13 +392,13 @@ def about_page():
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        st.image("static/images/rusa.jpg", caption="Muhammad Rifat Syarief ( 23031554 ) rifat@mhs.unesa.ac.id")
+        st.image("static/images/rusa.jpg", caption="Muhammad Rifat Syarief ( 23031554053 ) rifat@mhs.unesa.ac.id")
 
     with col2:
         st.image("static/images/faiz.jpg", caption="Moch Faiz Febriawan ( 23031554068 )  mochfaiz.23068@mhs.unesa.ac.id")
 
     with col3:
-        st.image("static/images/serigala.jpg", caption="Alamsyah Ramadhan Vaganza ( 23031554 ) amalsyah@mhs.unesa.ac.id")
+        st.image("static/images/serigala.jpg", caption="Alamsyah Ramadhan Vaganza ( 23031554192 ) amalsyah@mhs.unesa.ac.id")
 
     st.markdown("---")
     st.subheader("Emovoice 2024")
@@ -423,7 +430,7 @@ def main():
     if st.session_state.page == 'first':
         add_background("static/images/bluebg.jpg")
         st.title("Selamat Datang Di EmoVoice")
-        st.write("Kenali Emosi Berdasarkan Suaramu")
+        st.write("Cek Mental Health Berdasarkan Emosi Pada Suaramu")
         if st.button("Mulai Program"):
             st.session_state.page = 'home'
     else:
