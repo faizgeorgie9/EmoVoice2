@@ -103,16 +103,6 @@ def emotion_detection():
     st.subheader("Kenali Emosi Berdasarkan Suaramu")
     add_background("static/images/bluebg.jpg")
 
-    audio_path = None
-    if st.button("Rekam Suara"):
-        st.info(f"Merekam suara selama {DURATION} detik...")
-        sd.stop()
-        recording = sd.rec(int(SAMPLE_RATE * DURATION), samplerate=SAMPLE_RATE, channels=1, dtype='int16')
-        sd.wait()
-        normalized_audio = normalize_audio(recording)
-        temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".wav")
-        write(temp_file.name, SAMPLE_RATE, normalized_audio)
-        st.session_state.audio_file = temp_file.name
 
     if st.session_state.audio_file is not None:
         st.audio(st.session_state.audio_file, format="audio/wav")
