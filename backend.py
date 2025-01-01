@@ -115,7 +115,6 @@ def emotion_detection():
     if st.session_state.audio_file is None:
         sound_file = st.file_uploader("Unggah File Suara (WAV, MP3)", type=["wav", "mp3"])
         if sound_file is not None:
-            sound_file = normalize_audio(sound_file)
             temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".wav")
             st.session_state.audio_file = temp_file.name
             temp_file.write(sound_file.read())
