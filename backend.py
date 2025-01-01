@@ -383,7 +383,7 @@ def about_page():
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        st.image("static/images/rusa.jpg", caption="Muhammad Rifat Syarief ( 23031554053 ) rifat@mhs.unesa.ac.id")
+        st.image("static/images/rifat.jpeg", caption="Muhammad Rifat Syarief ( 23031554053 ) rifat@mhs.unesa.ac.id")
 
     with col2:
         st.image("static/images/faiz.jpg", caption="Moch Faiz Febriawan ( 23031554068 )  mochfaiz.23068@mhs.unesa.ac.id")
