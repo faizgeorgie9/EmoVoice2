@@ -392,7 +392,7 @@ def about_page():
         st.image("static/images/serigala.jpg", caption="Alamsyah Ramadhan Vaganza ( 23031554192 ) amalsyah@mhs.unesa.ac.id")
 
     st.markdown("---")
-    st.subheader("Emovoice 2024")
+    st.subheader("EmoVoice 2024")
     st.markdown("---")
 
 
