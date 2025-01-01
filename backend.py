@@ -132,19 +132,54 @@ def emotion_detection():
             # Scale features
             features_scaled = scaler.transform([features])
             
-            # Predict emotion
-            predicted_emotion = knn.predict(features_scaled)
-            predik = predicted_emotion[0]
+# Predict emotion
+predicted_emotion = knn.predict(features_scaled)
+predik = predicted_emotion[0]
 
-            emosi = [ 'angry', 'sad', 'fear', 'disgust']
-            
-            st.info(f"Emosi yang terdeteksi: {predicted_emotion[0]}")
-            if predik in emosi : 
-                st.error("Kondisi Mental : Depresi ")
-            else : 
-                st.success("Kondisi Mental : Normal ")
-        except Exception as e:
-            st.error(f"Terjadi kesalahan dalam memproses audio: {str(e)}")
+emosi = ['angry', 'sad', 'fear', 'disgust']
+
+# st.info dengan font warna hitam
+st.markdown(
+    f"""
+    <div style="background-color:#d1ecf1; padding:10px; border-radius:5px; color:black; font-size:16px;">
+        <b>Emosi yang terdeteksi:</b> {predicted_emotion[0]}
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
+
+if predik in emosi:
+    # st.error dengan font warna hitam
+    st.markdown(
+        """
+        <div style="background-color:#f8d7da; padding:10px; border-radius:5px; color:black; font-size:16px;">
+            <b>Kondisi Mental:</b> Depresi
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+else:
+    # st.success dengan font warna hitam
+    st.markdown(
+        """
+        <div style="background-color:#d4edda; padding:10px; border-radius:5px; color:black; font-size:16px;">
+            <b>Kondisi Mental:</b> Normal
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+# Penanganan error
+except Exception as e:
+    st.markdown(
+        f"""
+        <div style="background-color:#f8d7da; padding:10px; border-radius:5px; color:black; font-size:16px;">
+            <b>Terjadi kesalahan dalam memproses audio:</b> {str(e)}
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
 
 def article_page():
     st.title("Ruang Baca")
